@@ -4,6 +4,10 @@
 before_script:
 - wget http://getcomposer.org/composer.phar
 - php -d memory_limit=-1 composer.phar install --dev --prefer-source
+- replace "_MYSQL_HOST_" "$MYSQL_HOST" -- tests/configuration.php.dist
+- replace "_MYSQL_DATABASE_" "$MYSQL_DATABASE" -- tests/configuration.php.dist
+- replace "_MYSQL_USER_" "$MYSQL_USER" -- tests/configuration.php.dist
+- replace "_MYSQL_PASSWORD_" "$MYSQL_PASSWORD" -- tests/configuration.php.dist
 
 # define types/stages
 types:
