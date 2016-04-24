@@ -6,7 +6,6 @@ use InvalidArgumentException;
 use Zend\Authentication\Result as AuthenticationResult;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\ServiceManager\ServiceManager;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\Session\Container as SessionContainer;
 use ZfcUser\Authentication\Adapter\AdapterChainEvent as AuthenticationEvent;
 use ZfcUser\Entity\UserInterface as UserEntity;
@@ -14,7 +13,7 @@ use ZfcUser\Mapper\HydratorInterface as Hydrator;
 use ZfcUser\Mapper\UserInterface as UserMapper;
 use ZfcUser\Options\AuthenticationOptionsInterface as AuthenticationOptions;
 
-class Db extends AbstractAdapter // implements ServiceManagerAwareInterface
+class Db extends AbstractAdapter
 {
     /**
      * @var UserMapper

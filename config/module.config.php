@@ -39,8 +39,6 @@ return array(
     ),
     'service_manager' => array(
         'invokables' => array(
-            'ZfcUser\Authentication\Adapter\Db' => 'ZfcUser\Authentication\Adapter\Db',
-            'ZfcUser\Authentication\Storage\Db' => 'ZfcUser\Authentication\Storage\Db',
             'ZfcUser\Form\Login'                => 'ZfcUser\Form\Login',
             'zfcuser_user_service'              => 'ZfcUser\Service\User',
         ),
@@ -54,6 +52,9 @@ return array(
             'zfcuser_change_email_form'                     => 'ZfcUser\Factory\Form\ChangeEmailFormFactory',
             'zfcuser_user_mapper'                           => 'ZfcUser\Factory\UserMapperFactory',
             'zfcuser_user_hydrator'                         => 'ZfcUser\Factory\Mapper\UserHydratorFactory',
+        		
+            'ZfcUser\Authentication\Adapter\Db'             => 'ZfcUser\Factory\AuthenticationAdapterDbFactory',
+            'ZfcUser\Authentication\Storage\Db'             => 'ZfcUser\Factory\AuthenticationStorageDbFactory',
         ),
         'aliases' => array(
             'zfcuser_register_form_hydrator' => 'zfcuser_user_hydrator',

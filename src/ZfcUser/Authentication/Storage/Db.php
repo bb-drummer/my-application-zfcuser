@@ -4,11 +4,10 @@ namespace ZfcUser\Authentication\Storage;
 
 use Zend\Authentication\Storage;
 use Zend\Authentication\Storage\StorageInterface;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 use ZfcUser\Mapper\UserInterface as UserMapper;
 
-class Db implements Storage\StorageInterface, ServiceManagerAwareInterface
+class Db implements Storage\StorageInterface
 {
     /**
      * @var StorageInterface
@@ -30,6 +29,17 @@ class Db implements Storage\StorageInterface, ServiceManagerAwareInterface
      */
     protected $serviceManager;
 
+    /**
+     * basic constructor injecting service manager/locator
+     * @return self
+     */
+    public function __construct( ServiceLocatorInterface $serviceLocator )
+    {
+    	if ( $serviceLocator ) {
+    		$this->setServiceLocator($serviceLocator);
+    	}
+    }
+    
     /**
      * Returns true if and only if storage is empty
      *
