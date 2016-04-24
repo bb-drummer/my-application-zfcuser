@@ -5,6 +5,8 @@ namespace ZfcUserTest\Authentication\Adapter;
 use Zend\EventManager\EventManagerInterface;
 use ZfcUser\Authentication\Adapter\AdapterChain;
 use ZfcUser\Authentication\Adapter\AdapterChainEvent;
+use Zend\ServiceManager\ServiceManager;
+use ZfcUser\Factory\AuthenticationStorageDbFactory;
 
 class AdapterChainTest extends \PHPUnit_Framework_TestCase
 {
@@ -84,12 +86,17 @@ class AdapterChainTest extends \PHPUnit_Framework_TestCase
      */
     public function testResetAdapters()
     {
-        $listeners = array();
-
+    	$listeners = array();
+    	
+        $serviceManager = \ZfcUserTest\Factory\ServiceManagerFactory::getServiceManager();
+        
         for ($i=1; $i<=3; $i++) {
-            $storage = $this->getMock('ZfcUser\Authentication\Storage\Db');
-            $storage->expects($this->once())
-                    ->method('clear');
+            $storage = new \ZfcUser\Authentication\Storage\Db($serviceManager); 
+            $storage = $this->getMock(
+            	'ZfcUser\Authentication\Storage\Db',
+            	null,
+            	array($serviceManager)
+            );
 
             $adapter = $this->getMock('ZfcUser\Authentication\Adapter\AbstractAdapter');
             $adapter->expects($this->once())

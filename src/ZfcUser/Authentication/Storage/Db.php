@@ -5,6 +5,7 @@ namespace ZfcUser\Authentication\Storage;
 use Zend\Authentication\Storage;
 use Zend\Authentication\Storage\StorageInterface;
 use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use ZfcUser\Mapper\UserInterface as UserMapper;
 
 class Db implements Storage\StorageInterface
@@ -36,7 +37,7 @@ class Db implements Storage\StorageInterface
     public function __construct( ServiceLocatorInterface $serviceLocator )
     {
     	if ( $serviceLocator ) {
-    		$this->setServiceLocator($serviceLocator);
+    		$this->serviceManager = $serviceLocator;
     	}
     }
     

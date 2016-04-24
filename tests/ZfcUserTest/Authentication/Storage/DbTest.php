@@ -29,7 +29,9 @@ class DbTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $db = new Db;
+    	$serviceManager = \ZfcUserTest\Factory\ServiceManagerFactory::getServiceManager();
+            
+    	$db = new Db($serviceManager);
         $this->db = $db;
 
         $this->storage = $this->getMock('Zend\Authentication\Storage\Session');

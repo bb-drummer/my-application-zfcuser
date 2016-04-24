@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use Zend\Authentication\Result as AuthenticationResult;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Session\Container as SessionContainer;
 use ZfcUser\Authentication\Adapter\AdapterChainEvent as AuthenticationEvent;
 use ZfcUser\Entity\UserInterface as UserEntity;
@@ -47,7 +48,7 @@ class Db extends AbstractAdapter
     public function __construct( ServiceLocatorInterface $serviceLocator )
     {
     	if ( $serviceLocator ) {
-    		$this->setServiceLocator($serviceLocator);
+    		$this->serviceManager = $serviceLocator;
     	}
     }
     

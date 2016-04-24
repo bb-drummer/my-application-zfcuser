@@ -16,3 +16,6 @@ $loader->add('ZfcUserTest', __DIR__);
 if (!$config = @include 'configuration.php') {
     $config = require 'configuration.php.dist';
 }
+
+$config = array_merge_recursive( (include '../config/module.config.php'), $config);
+$serviceManager = \ZfcUserTest\Factory\ServiceManagerFactory::setConfig($config);

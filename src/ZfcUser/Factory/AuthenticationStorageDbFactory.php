@@ -5,7 +5,7 @@ use ZfcUser\Authentication\Storage\Db as ZfcUserAuthenticationStorageDb;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class AuthenticationAdapterDbFactory implements FactoryInterface
+class AuthenticationStorageDbFactory implements FactoryInterface
 {
     /**
      * Create service

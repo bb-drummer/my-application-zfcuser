@@ -94,16 +94,14 @@ class DbTest extends TestCase
             ->method('getCryptoService')
             ->will($this->returnValue($this->bcrypt));
 
-        $this->services  = $this->getMock('Zend\ServiceManager\ServiceManager');
-        $this->services->expects($this->any())
-            ->method('get')
-            ->will($this->returnValueMap(array(
-                array('zfcuser_module_options', true, $this->options),
-                array('zfcuser_user_mapper', true, $this->mapper),
-                array('zfcuser_user_hydrator', true, $this->hydrator),
-            )));
-
-        $this->db = new Db;
+    	$serviceManager = \ZfcUserTest\Factory\ServiceManagerFactory::getServiceManager();
+        $serviceManager->setService('zfcuser_module_options', $this->options);
+		$serviceManager->setService('zfcuser_user_mapper', $this->mapper);
+		$serviceManager->setService('zfcuser_user_hydrator', $this->hydrator);
+		
+		$this->services  = $serviceManager;
+		
+        $this->db = new Db($this->services);
         $this->db->setServiceManager($this->services);
         $this->db->setStorage($this->storage);
 

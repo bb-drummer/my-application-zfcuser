@@ -8,8 +8,13 @@ class AuthenticationServiceFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testFactory()
     {
-        $serviceManager = new ServiceManager;
-        $serviceManager->setService('ZfcUser\Authentication\Storage\Db', $this->getMock('ZfcUser\Authentication\Storage\Db'));
+    	$serviceManager = new ServiceManager;
+    	
+    	$serviceManager->setService('ZfcUser\Authentication\Storage\Db', $this->getMock(
+    			'ZfcUser\Authentication\Storage\Db',
+    			null,
+    			array($serviceManager)
+    	));
         $serviceManager->setService('ZfcUser\Authentication\Adapter\AdapterChain', $this->getMock('ZfcUser\Authentication\Adapter\AdapterChain'));
 
         $factory = new AuthenticationServiceFactory;
