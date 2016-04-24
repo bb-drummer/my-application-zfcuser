@@ -43,6 +43,10 @@ return array(
             'zfcuser_user_service'              => 'ZfcUser\Service\User',
         ),
         'factories' => array(
+        		
+            'ZfcUser\Authentication\Adapter\Db'             => 'ZfcUser\Factory\AuthenticationAdapterDbFactory',
+            'ZfcUser\Authentication\Storage\Db'             => 'ZfcUser\Factory\AuthenticationStorageDbFactory',
+        		
             'zfcuser_module_options'                        => 'ZfcUser\Factory\ModuleOptionsFactory',
             'zfcuser_auth_service'                          => 'ZfcUser\Factory\AuthenticationServiceFactory',
             'ZfcUser\Authentication\Adapter\AdapterChain'   => 'ZfcUser\Authentication\Adapter\AdapterChainServiceFactory',
@@ -52,9 +56,6 @@ return array(
             'zfcuser_change_email_form'                     => 'ZfcUser\Factory\Form\ChangeEmailFormFactory',
             'zfcuser_user_mapper'                           => 'ZfcUser\Factory\UserMapperFactory',
             'zfcuser_user_hydrator'                         => 'ZfcUser\Factory\Mapper\UserHydratorFactory',
-        		
-            'ZfcUser\Authentication\Adapter\Db'             => 'ZfcUser\Factory\AuthenticationAdapterDbFactory',
-            'ZfcUser\Authentication\Storage\Db'             => 'ZfcUser\Factory\AuthenticationStorageDbFactory',
         ),
         'aliases' => array(
             'zfcuser_register_form_hydrator' => 'zfcuser_user_hydrator',
