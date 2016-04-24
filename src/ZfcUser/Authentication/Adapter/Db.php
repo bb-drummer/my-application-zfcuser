@@ -14,7 +14,7 @@ use ZfcUser\Mapper\HydratorInterface as Hydrator;
 use ZfcUser\Mapper\UserInterface as UserMapper;
 use ZfcUser\Options\AuthenticationOptionsInterface as AuthenticationOptions;
 
-class Db extends AbstractAdapter implements ServiceManagerAwareInterface
+class Db extends AbstractAdapter // implements ServiceManagerAwareInterface
 {
     /**
      * @var UserMapper
@@ -41,6 +41,17 @@ class Db extends AbstractAdapter implements ServiceManagerAwareInterface
      */
     protected $options;
 
+    /**
+     * basic constructor injecting service manager/locator
+     * @return self
+     */
+    public function __construct( ServiceLocatorInterface $serviceLocator )
+    {
+    	if ( $serviceLocator ) {
+    		$this->setServiceLocator($serviceLocator);
+    	}
+    }
+    
     /**
      * Called when user id logged out
      */
