@@ -16,7 +16,7 @@ class AuthenticationServiceFactoryTest extends \PHPUnit_Framework_TestCase
     	
     	 
     	$serviceManager->setService('ZfcUser\Authentication\Adapter\Db', $this->getMock(
-    			'ZfcUser\Authentication\Storage\Db',
+    			'ZfcUser\Authentication\Adapter\Db',
     			null,
     			array($serviceManager)
     	));
