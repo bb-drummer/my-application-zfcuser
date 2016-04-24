@@ -22,6 +22,7 @@ class AdapterChainServiceFactory implements FactoryInterface
 
         //iterate and attach multiple adapters and events if offered
         foreach ($options->getAuthAdapters() as $priority => $adapterName) {
+        	$adapter = null;
         	if ( !$serviceLocator->has($adapterName) ) {
         		$adapter = $serviceLocator->get($adapterName);
         	}
