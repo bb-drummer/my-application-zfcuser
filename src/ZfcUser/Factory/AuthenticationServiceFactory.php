@@ -15,8 +15,8 @@ class AuthenticationServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         /* @var $authStorage Storage\StorageInterface */
-        //$authStorage = new \ZfcUser\Authentication\Storage\Db($serviceLocator);
-		$authStorage = $serviceLocator->get('ZfcUser\Authentication\Storage\Db');
+        $authStorage = new \ZfcUser\Authentication\Storage\Db($serviceLocator);
+		//$authStorage = $serviceLocator->get('ZfcUser\Authentication\Storage\Db');
         
         /* @var $authAdapter Adapter\AdapterInterface */
         //$authAdapter = new \ZfcUser\Authentication\Adapter\AdapterChainServiceFactory(); 
